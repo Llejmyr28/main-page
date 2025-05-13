@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --primary-color: #0772e4;
+      --accent-color: #ff6f61;
+      --background-color: #f4f6f9;
+      --dark-bg: #1e1e1e;
+      --dark-text: #f0f0f0;
+      --button-bg: #4CAF50;
+      --box-shadow: rgba(0, 0, 0, 0.2);
+      --highlight-color: #ffcc00;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background-color);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--primary-color);
+      padding: 1.5rem 2rem;
+      color: white;
+      box-shadow: 0 4px 6px var(--box-shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .navbar .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .menu-options {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .menu-options a {
+      color: white;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 6px;
+      transition: color 0.3s ease;
+      text-decoration: none; /* Remove underline by default */
+    }
+
+    .menu-options a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: white;
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s;
+    }
+
+    .menu-options a:hover::after {
+      width: 100%;
+    }
+
+    .profile-container {
+      position: relative;
+    }
+
+    .profile-button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .profile-button:hover {
+      background-color: var(--highlight-color);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: var(--dark-bg);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      margin-top: 10px;
+      padding: 10px;
+    }
+
+    .dropdown-menu a {
+      color: white;
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: var(--highlight-color);
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 40px 20px;
+      text-align: center;
+      flex: 1; /* This ensures the content area takes up remaining space */
+    }
+
+    .contact h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    .contact-description {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .contact-info a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 15px;
+      border: 2px solid var(--primary-color);
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .contact-info a:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--primary-color);
+      color: white;
+      margin-top: auto; /* This pushes the footer to the bottom */
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">SmartPlate</div>
+    <div class="menu-options">
+      <a href="index.html">Home</a>
+      <a href="about-us.html">About Us</a>
+      <a href="#">Contact</a>
+      <a href="health-care-results.html">BMI</a>
+    </div>
+    <div class="profile-container">
+      <button class="profile-button" onclick="toggleMenu()">👤 User</button>
+      <div class="dropdown-menu" id="profileDropdown">
+        <a href="settings.html">Settings</a>
+        <a href="#">Account</a>
+        <a href="#">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Section -->
+  <div class="container">
+    <div class="contact">
+      <h1>Contact Us</h1>
+      <p class="contact-description">
+        We'd love to hear from you! Reach out for any questions or feedback.
+      </p>
+
+      <div class="contact-info">
+        <a href="mailto:n.u.t.r.i.appbtihs@gmail.com">
+          📧 Email us
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100061614713983" target="_blank">
+          🌐 Visit our Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 SmartPlate - All Rights Reserved</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+
+      const fontSize = localStorage.getItem('fontSize') || 'medium';
+      document.body.style.fontSize = fontSize === 'small' ? '14px' : fontSize === 'large' ? '18px' : '16px';
+    });
+
+    function toggleMenu() {
+      const dropdown = document.getElementById('profileDropdown');
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    });
+  </script>
+</body>
+
+</html>

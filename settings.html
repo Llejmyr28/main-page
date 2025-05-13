@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings</title>
+  <style>
+    :root {
+      --primary: #0772e4;
+      --secondary: #4CAF50;
+      --bg: #f4f6f9;
+      --dark: #1e1e1e;
+      --dark-secondary: #2a2a2a;
+      --text: #333;
+      --text-dark: #f0f0f0;
+      --card-bg: #ffffff;
+      --border-radius: 16px;
+      --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dark-mode {
+      background-color: var(--dark);
+      color: var(--text-dark);
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dark-mode .container {
+      background-color: var(--dark-secondary);
+      color: var(--text-dark);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .dark-mode h1, .dark-mode h2 {
+      color: #90cdf4;
+    }
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    select {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background-color: #f0faff;
+    }
+
+    .dark-mode select {
+      background-color: #333;
+      color: var(--text-dark);
+      border-color: #555;
+    }
+
+    .dark-mode select:focus {
+      background-color: #444;
+      border-color: var(--primary);
+    }
+
+    button {
+      padding: 0.75rem 2rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, var(--secondary), var(--primary));
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .back-btn button {
+      width: auto;
+    }
+
+    /* Content Section Example */
+    .content-section {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background-color: #ffffff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+
+    .dark-mode .content-section {
+      background-color: #2a2a2a;
+      color: var(--text-dark);
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="settingsTitle">⚙️ Settings</h1>
+
+    <div class="option">
+      <label for="theme" id="themeLabel">Theme</label>
+      <select id="theme">
+        <option value="light" id="lightOption">Light</option>
+        <option value="dark" id="darkOption">Dark</option>
+      </select>
+    </div>
+
+    <div class="option">
+      <label for="fontSize" id="fontSizeLabel">Font Size</label>
+      <select id="fontSize">
+        <option value="small" id="smallOption">Small</option>
+        <option value="medium" selected id="mediumOption">Medium</option>
+        <option value="large" id="largeOption">Large</option>
+      </select>
+    </div>
+
+    <div class="back-btn">
+      <button onclick="goBack()" id="backBtn">← Back to Main</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      const savedFontSize = localStorage.getItem('fontSize') || 'medium';
+
+      document.getElementById('theme').value = savedTheme;
+      document.getElementById('fontSize').value = savedFontSize;
+
+      applyFontSize(savedFontSize);
+      if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+
+      document.getElementById('theme').addEventListener('change', function () {
+        const theme = this.value;
+        localStorage.setItem('theme', theme);
+        document.body.classList.toggle('dark-mode', theme === 'dark');
+      });
+
+      document.getElementById('fontSize').addEventListener('change', function () {
+        const size = this.value;
+        localStorage.setItem('fontSize', size);
+        applyFontSize(size);
+      });
+
+      function applyFontSize(size) {
+        document.body.style.fontSize =
+          size === 'small' ? '14px' : size === 'medium' ? '16px' : '18px';
+      }
+    });
+
+    function goBack() {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

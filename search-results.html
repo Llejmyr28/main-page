@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles2.css" />
+    <title>Search Results</title>
+  </head>
+  <body class="body1">
+    <div class="navbar">
+      <div class="menu-icon" onclick="toggleMenu()" id="menuIcon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div
+        class="close-icon"
+        onclick="toggleMenu()"
+        id="closeIcon"
+        style="display: none"
+      >
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+      </div>
+      <div class="menu-options" id="menuOptions">
+        <a href="index.html" style="border-bottom: 0.1px solid #7b7b7b">Home</a>
+        <a
+          href="about-us.html"
+          style="
+            border-top: 0.1px solid #7b7b7b;
+            border-bottom: 0.1px solid #7b7b7b;
+          "
+          >About us</a
+        >
+        <a
+        id="darkModeToggle"
+          style="
+            border-top: 0.1px solid #7b7b7b;
+            border-bottom: 0.1px solid #7b7b7b;
+          "
+          >Theme</a
+        >
+        <a href="contact.html" style="border-top: 0.1px solid #7b7b7b"
+          >Contact</a
+        >
+      </div>
+      <div class="search-container">
+        <input
+          type="text"
+          spellcheck="true"
+          id="searchInput"
+          placeholder="Input ingredients.. (e.g salt, pork)"
+          oninput="showSuggestions(this.value)"
+        />
+        <button type="button" onclick="search()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-search"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+        </button>
+      </div></div>
+      <div class="suggestions-container" id="suggestionsContainer">
+        <ul id="suggestionsList">
+            <!-- Suggestions will be added dynamically here -->
+        </ul>
+    </div>
+    <div id="results-container"></div>
+    <div class="bottom-navbar">
+      <button onclick="redirectToHealthCare()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-heart-pulse"
+        >
+          <path
+            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+          />
+          <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" />
+        </svg>
+      </button>
+      <button onclick="redirectToHome()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-home"
+        >
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      </button>
+      <button onclick="redirectToAboutUs()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-help"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+          <path d="M12 17h.01" />
+        </svg>
+      </button>
+    </div>
+    <div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+   </div>
+    <script src="script.js"></script>
+  </body>
+</html>

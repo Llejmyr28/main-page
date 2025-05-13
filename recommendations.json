@@ -1,0 +1,59 @@
+{
+  "ageGroups": [
+    {
+      "ageRange": "1-2",
+      "male": {"energyIntake": 1000, "waterIntake": 1000},
+      "female": {"energyIntake": 920, "waterIntake": 920}
+    },
+    {
+      "ageRange": "3-5",
+      "male": {"energyIntake": 1350, "waterIntake": 1350},
+      "female": {"energyIntake": 1260, "waterIntake": 1260}
+    },
+    {
+      "ageRange": "6-9",
+      "male": {"energyIntake": 1600, "waterIntake": 1600},
+      "female": {"energyIntake": 1470, "waterIntake": 1470}
+    },
+    {
+      "ageRange": "10-12",
+      "male": {"energyIntake": 2060, "waterIntake": 2060},
+      "female": {"energyIntake": 1980, "waterIntake": 1980}
+    },
+    {
+      "ageRange": "13-15",
+      "male": {"energyIntake": 2700, "waterIntake": 2700},
+      "female": {"energyIntake": 2170, "waterIntake": 2170}
+    },
+    {
+      "ageRange": "16-18",
+      "male": {"energyIntake": 3010, "waterIntake": 3010},
+      "female": {"energyIntake": 2280, "waterIntake": 2280}
+    },
+    {
+      "ageRange": "19-29",
+      "male": {"energyIntake": 2530, "waterIntake": 2530},
+      "female": {"energyIntake": 1930, "waterIntake": 1930}
+    },
+    {
+      "ageRange": "30-49",
+      "male": {"energyIntake": 2420, "waterIntake": 2420},
+      "female": {"energyIntake": 1870, "waterIntake": 1870}
+    },
+    {
+      "ageRange": "50-59",
+      "male": {"energyIntake": 2420, "waterIntake": 2420},
+      "female": {"energyIntake": 1870, "waterIntake": 1870}
+    },
+    {
+      "ageRange": "60-69",
+      "male": {"energyIntake": 2140, "waterIntake": 2140},
+      "female": {"energyIntake": 1610, "waterIntake": 1610}
+    },
+    {
+      "ageRange": "70+",
+      "male": {"energyIntake": 1960, "waterIntake": 1960},
+      "female": {"energyIntake": 1540, "waterIntake": 1540}
+    }
+  ]
+}

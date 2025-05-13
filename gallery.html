@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css">
+  <title>Gallery</title>
+</head>
+<body>
+  <h2>Gallery</h2>
+  <div class="gallery">
+  <div class="gallery-item">
+    <img src="images/image1.png" alt="Image 1" onclick="showPreview('images/image1.jpg')">
+  </div>
+  <div class="gallery-item">
+    <img src="images/image1.png" alt="Image 2" onclick="showPreview('images/image2.jpg')">
+  </div>
+  <div class="gallery-item">
+    <img src="images/image3.jpg" alt="Image 3" onclick="showPreview('images/image3.jpg')">
+  </div>
+  <div class="gallery-item">
+    <img src="images/image4.jpg" alt="Image 4" onclick="showPreview('images/image4.jpg')">
+  </div>
+  <div class="gallery-item">
+    <img src="images/image5.jpg" alt="Image 5" onclick="showPreview('images/image5.jpg')">
+  </div>
+  <div class="gallery-item">
+    <img src="images/image6.jpg" alt="Image 6" onclick="showPreview('images/image6.jpg')">
+  </div>
+  <div class="gallery-item">
+    <img src="images/image7.jpg" alt="Image 7" onclick="showPreview('images/image7.jpg')">
+  </div>
+  <div class="gallery-item">
+    <img src="images/image8.jpg" alt="Image 8" onclick="showPreview('images/image8.jpg')">
+  </div>
+</div>
+<div id="previewModal" class="modal">
+  <span class="close" onclick="closePreview()">&times;</span>
+  <img class="modal-content" id="previewImage">
+</div>
+      <div class="bottom-navbar">
+        <button onclick="redirectToHome()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
+    </div>
+    <div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+   </div>
+  <script src="script.js" defer></script>
+</body>
+</html>

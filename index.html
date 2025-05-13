@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Healthy Living Guide: Learn about BMI, healthy eating, and more!">
+  <title>Healthy Living - BMI & Nutrition Guide</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <style>
+    :root {
+      --primary-color: #0772e4;
+      --accent-color: #ff6f61;
+      --background-color: #f4f6f9;
+      --dark-bg: #1e1e1e;
+      --dark-text: #f0f0f0;
+      --button-bg: #4CAF50;
+      --box-shadow: rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background-color);
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    /* ✅ Fix: make headings visible in dark mode */
+    .dark-mode h1,
+    .dark-mode h2,
+    .dark-mode h3,
+    .dark-mode h4 {
+      color: var(--dark-text);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--primary-color);
+      padding: 1.5rem 2rem;
+      color: white;
+      box-shadow: 0 4px 6px var(--box-shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .navbar .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .menu-options {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .menu-options a {
+      color: white;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 6px;
+      transition: color 0.3s ease;
+    }
+
+    .menu-options a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: white;
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s;
+    }
+
+    .menu-options a:hover::after {
+      width: 100%;
+    }
+
+    .profile-container {
+      position: relative;
+    }
+
+    .profile-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-button:hover {
+      transform: scale(1.1);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: white;
+      color: black;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px var(--box-shadow);
+      z-index: 100;
+      width: 150px;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f4f6f9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 1rem;
+      animation: fadeIn 1s ease;
+    }
+
+    .main-content {
+      font-size: 3rem;
+      text-align: center;
+      margin: 2rem 0;
+      font-weight: bold;
+      background: linear-gradient(90deg, #0772e4, #4CAF50);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .search-container input {
+      padding: 0.75rem;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-container input:focus {
+      border-color: var(--primary-color);
+    }
+
+    .search-container button {
+      padding: 0.75rem 1rem;
+      background-color: var(--primary-color);
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-container button:hover {
+      background-color: var(--accent-color);
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .introduction, .bottomsec {
+      max-width: 700px;
+      margin: 1rem auto;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .bmi-info-box {
+      background: var(--accent-color);
+      color: white;
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px var(--box-shadow);
+    }
+
+    .bmi-info-box:hover {
+      background: #0772e4;
+    }
+
+    .bmi-category-boxes {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .bmi-box {
+      padding: 1.5rem;
+      border-radius: 12px;
+      font-weight: bold;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px var(--box-shadow);
+    }
+
+    .bmi-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-box {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #2196f3;
+      border-radius: 50%;
+      animation: floatWave 10s linear infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 10px var(--box-shadow);
+    }
+
+    .floating-box:hover {
+      background-color: var(--accent-color);
+    }
+
+    @keyframes floatWave {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-25px) translateX(30vw); }
+      100% { transform: translateY(0) translateX(60vw); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--primary-color);
+      color: white;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu-options {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .search-container {
+        flex-direction: column;
+      }
+
+      .search-container input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">SmartPlate</div>
+    <div class="menu-options">
+      <a href="#">Home</a>
+      <a href="about-us.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="health-care-results.html">BMI</a>
+    </div>
+    <div class="profile-container">
+      <button class="profile-button" onclick="toggleMenu1()">👤 User</button>
+      <div class="dropdown-menu" id="profileDropdown">
+        <a href="settings.html">Settings</a>
+        <a href="#">Account</a>
+        <a href="#">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="main-content">FINAL PROJECT<br /><small>FOR COM PROG</small></div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search. (e.g salt, pork, etc.)" oninput="showSuggestions(this.value)" />
+      <button onclick="search()">🔍</button>
+    </div>
+
+    <h1>The Importance of Healthy Eating</h1>
+    <p class="introduction">
+      A healthy diet consists of nutrient-rich foods like fruits, vegetables, whole grains, lean proteins, and healthy fats. Choosing whole, unprocessed foods supports a healthy gut and overall well-being.
+    </p>
+
+    <div class="bottomsec">
+      If your BMI is underweight, consider increasing your portion sizes and caloric intake with our tailored, nutrient-rich recipes.
+    </div>
+
+    <div class="bmi-info-box" onclick="showBMICategories()">
+      <h2>📊 What Do BMI Categories Mean?</h2>
+      <p>Click to learn about Underweight, Normal, Overweight, and Obese levels.</p>
+    </div>
+
+    <div class="bmi-category-boxes">
+      <div class="bmi-box" style="background-color:#2196F3;" onclick="showBMIDetail('underweight')">Underweight</div>
+      <div class="bmi-box" style="background-color:#4CAF50;" onclick="showBMIDetail('normal')">Normal</div>
+      <div class="bmi-box" style="background-color:#FFC107; color:#fdfdfd;" onclick="showBMIDetail('overweight')">Overweight</div>
+      <div class="bmi-box" style="background-color:#FF5722;" onclick="showBMIDetail('obese1')">Obese I</div>
+      <div class="bmi-box" style="background-color:#B71C1C;" onclick="showBMIDetail('obese2')">Obese II</div>
+    </div>
+
+    <div class="floating-box" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+  </div>
+
+  <footer class="footer">&copy; 2025 HealthyLife Project</footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+
+      const fontSize = localStorage.getItem('fontSize') || 'medium';
+      document.body.style.fontSize = fontSize === 'small' ? '14px' : fontSize === 'large' ? '18px' : '16px';
+    });
+
+    function toggleMenu1() {
+      const menu = document.getElementById('profileDropdown');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function showBMIDetail(category) {
+      let message = '';
+
+      switch (category) {
+        case 'underweight':
+          message = 'Underweight: BMI less than 18.5. A healthy weight should be targeted.';
+          break;
+        case 'normal':
+          message = 'Normal: BMI between 18.5 and 24.9. Maintain a balanced diet and regular exercise.';
+          break;
+        case 'overweight':
+          message = 'Overweight: BMI between 25 and 29.9. Consider weight loss strategies for better health.';
+          break;
+        case 'obese1':
+          message = 'Obese I: BMI between 30 and 34.9. Seek a healthcare provider’s advice for weight management.';
+          break;
+        case 'obese2':
+          message = 'Obese II: BMI between 35 and 39.9. Medical intervention may be necessary.';
+          break;
+        default:
+          message = 'Category not found.';
+      }
+
+      Swal.fire({
+        title: `${category.charAt(0).toUpperCase() + category.slice(1)} BMI Category`,
+        text: message,
+        icon: 'info',
+        confirmButtonText: 'Got it!',
+      });
+    }
+
+    function search() {
+      const query = document.getElementById('searchInput').value;
+      alert(`Searching for: ${query}`);
+    }
+
+    function showSuggestions(value) {
+      console.log("Suggestions for:", value);
+    }
+  </script>
+</body>
+</html>
