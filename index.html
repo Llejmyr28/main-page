@@ -307,7 +307,7 @@
   </style>
 </head>
 
-<body>
+<body style="display: none;">
   <nav class="navbar">
     <div class="logo">SmartPlate</div>
     <div class="menu-options">
@@ -320,8 +320,8 @@
       <button class="profile-button" onclick="toggleMenu1()">👤 User</button>
       <div class="dropdown-menu" id="profileDropdown">
         <a href="settings.html">Settings</a>
-        <a href="#">Account</a>
-        <a href="#">Sign Out</a>
+        <a href="account.html">Account</a>
+        <a href="#" onclick="event.preventDefault(); logout();">Sign Out</a>
       </div>
     </div>
   </nav>
@@ -414,5 +414,7 @@
       console.log("Suggestions for:", value);
     }
   </script>
+    <script type="module" src="js/authGuard.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
